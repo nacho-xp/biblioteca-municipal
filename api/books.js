@@ -123,22 +123,34 @@ module.exports = async function handler(req, res) {
      POST → GUARDAR CONTACTO (público)
   ------------------------------------------------------- */
   if (method === 'POST' && action === 'contact') {
-    const { nombre, email, telefono, mensaje } = req.body || {};
+    const { nombre, email, telefono, mensaje, libro_id } = req.body || {};
 
     if (!nombre || !email || !mensaje) {
       return err(res, 400, 'Faltan campos obligatorios');
     }
 
-    // Validación básica de email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return err(res, 400, 'Email inválido');
     }
 
     try {
+      // Guardar consulta de contacto
       await sql`
         INSERT INTO consultas (nombre, email, telefono, mensaje)
         VALUES (${nombre}, ${email}, ${telefono || null}, ${mensaje})
       `;
+
+      // Si viene un libro_id, registrar la reserva
+      if (libro_id) {
+        const libroIdNum = parseInt(libro_id, 10);
+        if (!isNaN(libroIdNum)) {
+          await sql`
+            INSERT INTO reservas (nombre, email, telefono, libro_id)
+            VALUES (${nombre}, ${email}, ${telefono || null}, ${libroIdNum})
+          `;
+        }
+      }
+
       return json(res, 201, { ok: true });
     } catch (e) {
       console.error('Error guardando consulta:', e);

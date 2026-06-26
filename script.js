@@ -82,6 +82,7 @@ async function loadCatalog() {
 
   renderCategories();
   renderCatalog();
+  populateBookSelect();
 
   // Buscador
   const searchInput = document.getElementById('catalog-search');
@@ -147,7 +148,7 @@ function renderCatalog() {
           <p class="book-author">${escHtml(b.autor || '')}</p>
           <button
             class="book-btn ${available ? 'book-btn-available' : 'book-btn-unavailable'}"
-            ${available ? '' : 'disabled'}
+            ${available ? `onclick="reservarLibro(${b.id})"` : 'disabled'}
             aria-label="${available ? 'Reservar ' + b.titulo : 'No disponible'}"
           >
             ${available ? 'Reservar' : 'En espera'}
@@ -156,6 +157,34 @@ function renderCatalog() {
       </article>
     `;
   }).join('');
+}
+
+function populateBookSelect() {
+  const select = document.getElementById('contact-book');
+  if (!select) return;
+  // Mantener la opción vacía inicial
+  select.innerHTML = '<option value="">— Sin reserva de libro —</option>';
+  allBooks
+    .filter(b => b.disponible !== false && b.disponible !== 0)
+    .forEach(b => {
+      const opt = document.createElement('option');
+      opt.value = b.id;
+      opt.textContent = `${b.titulo} — ${b.autor}`;
+      select.appendChild(opt);
+    });
+}
+
+/* =========================================================
+   RESERVAR LIBRO — scroll al formulario y preseleccionar
+   ========================================================= */
+function reservarLibro(bookId) {
+  const select = document.getElementById('contact-book');
+  if (select) select.value = bookId;
+
+  const contactSection = document.getElementById('contacto');
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 /* =========================================================
@@ -187,6 +216,7 @@ function initContactForm() {
         nombre:   form.querySelector('#contact-name')?.value.trim(),
         email:    form.querySelector('#contact-email')?.value.trim(),
         telefono: form.querySelector('#contact-phone')?.value.trim(),
+        libro_id: form.querySelector('#contact-book')?.value || null,
         mensaje:  form.querySelector('#contact-msg')?.value.trim(),
       };
 

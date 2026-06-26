@@ -29,6 +29,28 @@ COMMENT ON COLUMN libros.disponible IS 'TRUE = disponible para préstamo; FALSE 
 
 
 -- -------------------------------------------------------------
+-- TABLA: reservas
+--   Reservas realizadas desde el formulario del catálogo.
+-- -------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS reservas (
+    id          SERIAL          PRIMARY KEY,
+    nombre      VARCHAR(200)    NOT NULL,
+    email       VARCHAR(254)    NOT NULL,
+    telefono    VARCHAR(30),
+    libro_id    INTEGER         NOT NULL REFERENCES libros(id) ON DELETE CASCADE,
+    estado      VARCHAR(50)     NOT NULL DEFAULT 'pendiente',
+    created_at  TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
+
+    CONSTRAINT chk_res_nombre CHECK (LENGTH(TRIM(nombre)) > 0),
+    CONSTRAINT chk_res_email  CHECK (email LIKE '%@%.%'),
+    CONSTRAINT chk_res_estado CHECK (estado IN ('pendiente', 'confirmada', 'cancelada'))
+);
+
+COMMENT ON TABLE  reservas IS 'Reservas de libros realizadas desde el sitio web';
+COMMENT ON COLUMN reservas.estado IS 'pendiente | confirmada | cancelada';
+
+
+-- -------------------------------------------------------------
 -- TABLA: consultas
 --   Mensajes recibidos desde el formulario de contacto.
 -- -------------------------------------------------------------
@@ -57,6 +79,9 @@ CREATE INDEX IF NOT EXISTS idx_libros_categoria   ON libros (categoria);
 CREATE INDEX IF NOT EXISTS idx_libros_disponible  ON libros (disponible);
 CREATE INDEX IF NOT EXISTS idx_consultas_leida    ON consultas (leida);
 CREATE INDEX IF NOT EXISTS idx_consultas_created  ON consultas (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_reservas_libro     ON reservas (libro_id);
+CREATE INDEX IF NOT EXISTS idx_reservas_estado    ON reservas (estado);
+CREATE INDEX IF NOT EXISTS idx_reservas_created   ON reservas (created_at DESC);
 
 
 -- =============================================================
@@ -113,6 +138,22 @@ CREATE OR REPLACE VIEW v_consultas_pendientes AS
     FROM   consultas
     WHERE  leida = FALSE
     ORDER  BY created_at DESC;
+
+-- Reservas pendientes con título del libro
+CREATE OR REPLACE VIEW v_reservas_pendientes AS
+    SELECT
+        r.id,
+        r.nombre,
+        r.email,
+        r.telefono,
+        l.titulo    AS libro,
+        l.autor,
+        r.estado,
+        r.created_at
+    FROM  reservas r
+    JOIN  libros   l ON l.id = r.libro_id
+    WHERE r.estado = 'pendiente'
+    ORDER BY r.created_at DESC;
 
 
 -- =============================================================
