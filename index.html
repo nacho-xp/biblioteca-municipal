@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Municipal</title>
+  <meta name="description" content="Biblioteca Municipal - Tu espacio de conocimiento y cultura. Préstamo de libros, sala de lectura, acceso a internet y actividades culturales.">
+  <meta name="keywords" content="biblioteca, libros, préstamo, cultura, lectura, municipio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">Biblioteca Municipal</a>
+      <button id="mobile-toggle" class="nav-mobile-btn" aria-label="Menú" aria-expanded="false">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+      </button>
+      <div id="nav-links" class="nav-links">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#catalogo" class="nav-link">Catálogo</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <a href="#inicio" class="mobile-link">Inicio</a>
+      <a href="#nosotros" class="mobile-link">Nosotros</a>
+      <a href="#servicios" class="mobile-link">Servicios</a>
+      <a href="#catalogo" class="mobile-link">Catálogo</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+      <a href="#contacto" class="mobile-link">Contacto</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+      <div class="hero-bg">
+        <img
+          src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          alt="Estanterías de libros en una biblioteca con iluminación cálida"
+          class="hero-img"
+          loading="eager"
+        >
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Biblioteca Municipal</h1>
+        <p class="hero-subtitle">Tu espacio de conocimiento, cultura y comunidad. Descubrí miles de libros y actividades para toda la familia.</p>
+        <a href="#catalogo" class="btn btn-primary btn-lg">Explorar Catálogo</a>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="section bg-white">
+      <div class="container grid-2">
+        <div class="about-text">
+          <h2 class="section-title">Sobre Nosotros</h2>
+          <p class="text-body">Desde 1985, nuestra biblioteca es un pilar fundamental de la comunidad. Ofrecemos un espacio inclusivo donde personas de todas las edades pueden acceder al conocimiento, la cultura y la tecnología.</p>
+          <p class="text-body mt-4">Con más de 25.000 títulos en nuestro acervo y un equipo comprometido, trabajamos cada día para fomentar la lectura y el aprendizaje en nuestra ciudad.</p>
+        </div>
+        <img
+          src="https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Interior de una biblioteca con estanterías de madera"
+          class="about-img"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Nuestros Servicios</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="service-title">Préstamo de Libros</h3>
+            <p class="service-desc">Llevá hasta 3 libros por 15 días con tu carnet de socio.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10.5"/><path d="M12 12H3a1 1 0 0 0-1 1v6h9"/><path d="M12 22v-9"/><path d="M16 22h6"/><path d="M22 13v9"/><path d="M16 13h6"/></svg>
+            </div>
+            <h3 class="service-title">Sala de Lectura</h3>
+            <p class="service-desc">Espacios cómodos y silenciosos para leer y estudiar.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+            </div>
+            <h3 class="service-title">Acceso a Internet</h3>
+            <p class="service-desc">Computadoras con internet gratuito y Wi-Fi libre.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/><path d="m10 7-3 5h6l-3 5"/></svg>
+            </div>
+            <h3 class="service-title">Actividades Culturales</h3>
+            <p class="service-desc">Talleres, charlas y encuentros para toda la comunidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" class="section bg-gray">
+      <div class="container">
+        <div class="catalog-header">
+          <h2 class="section-title">Catálogo de Libros</h2>
+          <p class="text-muted">Más de 25.000 títulos disponibles. Buscá por título, autor o categoría.</p>
+        </div>
+        <div class="catalog-controls">
+          <div class="search-wrapper">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="catalog-search" class="search-input" placeholder="Buscar por título, autor o tema..." aria-label="Buscar libros">
+          </div>
+          <div id="catalog-categories" class="categories"></div>
+        </div>
+        <p class="results-count">Mostrando <span id="results-num" class="results-num">0</span> resultados</p>
+        <div id="catalog-grid" class="catalog-grid"></div>
+        <div id="catalog-empty" class="catalog-empty hidden">
+          <p>No encontramos resultados. Probá con otro término.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section bg-white">
+      <div class="container container-narrow">
+        <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>¿Cómo puedo hacerme socio de la biblioteca?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Podés acercarte con tu DNI y un comprobante de domicilio. El trámite es gratuito e inmediato.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>¿Cómo puedo renovar un préstamo?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Puede renovarse personalmente o por teléfono antes de la fecha de vencimiento.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>¿Cuántos libros puedo llevar en préstamo?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Podés retirar hasta 3 libros por un plazo de 15 días, renovable una vez.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>¿La biblioteca tiene actividades para niños?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, ofrecemos hora del cuento, talleres de arte y club de lectura infantil todos los sábados.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>¿Puedo usar las computadoras sin ser socio?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, el acceso a internet es libre para toda la comunidad. Solo necesitás registrarte en recepción.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Contacto</h2>
+        <div class="grid-2">
+          <div>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Nombre completo</label>
+                <input id="contact-name" name="nombre" type="text" required class="form-input" placeholder="Tu nombre">
+              </div>
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Correo electrónico</label>
+                <input id="contact-email" name="email" type="email" required class="form-input" placeholder="tucorreo@email.com">
+              </div>
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">Teléfono <span class="optional">(opcional)</span></label>
+                <input id="contact-phone" name="telefono" type="tel" class="form-input" placeholder="+54 9 ...">
+              </div>
+              <div class="form-group">
+                <label for="contact-msg" class="form-label">Mensaje</label>
+                <textarea id="contact-msg" name="mensaje" rows="4" required class="form-input" placeholder="Escribí tu consulta..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="form-submit">Enviar Mensaje</button>
+              <p id="form-success" class="form-success hidden">¡Mensaje enviado! Te responderemos a la brevedad.</p>
+              <p id="form-error" class="form-error hidden">Ocurrió un error. Intentá nuevamente.</p>
+            </form>
+          </div>
+          <div class="contact-info">
+            <div class="info-block">
+              <h3 class="info-title">Horarios de Atención</h3>
+              <p class="text-sm">Lunes a Viernes: <strong>8:00 – 20:00</strong></p>
+              <p class="text-sm">Sábados: <strong>9:00 – 13:00</strong></p>
+              <p class="text-sm">Domingos y feriados: <strong>Cerrado</strong></p>
+            </div>
+            <div class="info-block">
+              <h3 class="info-title">Ubicación</h3>
+              <p class="text-sm">Av. Dr. Luis Gutnisky 2208-2298, Formosa — P3600CLI</p>
+            </div>
+            <iframe
+              src="https://maps.google.com/maps?q=Av.%20Dr.%20Luis%20Gutnisky%202208-2298,%20Formosa,%20Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="250"
+              class="map-embed"
+              allowfullscreen
+              loading="lazy"
+              title="Ubicación de la Biblioteca Municipal"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 Biblioteca Municipal. Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrativo — Biblioteca Municipal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+  <!-- ===== LOGIN ===== -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <p class="login-logo">Biblioteca Municipal</p>
+      <p class="login-subtitle">Panel Administrativo</p>
+      <div id="login-error" class="login-error hidden">Usuario o contraseña incorrectos.</div>
+      <div class="modal-form">
+        <div class="form-group">
+          <label for="login-user" class="form-label">Usuario</label>
+          <input id="login-user" type="text" class="form-input" placeholder="admin" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="login-pass" class="form-label">Contraseña</label>
+          <input id="login-pass" type="password" class="form-input" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button id="login-btn" class="btn btn-primary" style="margin-top:.25rem;">Ingresar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PANEL ===== -->
+  <div id="admin-panel" class="hidden">
+
+    <!-- Header -->
+    <header class="admin-header">
+      <div>
+        <div class="admin-header-title">Biblioteca Municipal</div>
+        <div class="admin-header-sub">Panel Administrativo</div>
+      </div>
+      <button id="logout-btn" class="btn btn-sm btn-secondary" style="color:#fff;border-color:rgba(255,255,255,.3);">
+        Cerrar sesión
+      </button>
+    </header>
+
+    <!-- Main -->
+    <main class="admin-main">
+
+      <!-- Toolbar -->
+      <div class="admin-toolbar">
+        <h1 class="admin-title">Catálogo de Libros</h1>
+        <button id="add-book-btn" class="btn btn-primary btn-sm">+ Agregar libro</button>
+      </div>
+
+      <!-- Tabla -->
+      <div class="table-wrapper">
+        <div id="table-loader" class="loader">Cargando libros...</div>
+        <div id="table-empty" class="table-empty hidden">No hay libros cargados todavía.</div>
+        <table class="admin-table" id="books-table" style="display:none;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Categoría</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="books-tbody"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ===== MODAL LIBRO ===== -->
+  <div id="book-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <h2 class="modal-title" id="modal-title">Agregar libro</h2>
+      <div class="modal-form">
+        <input type="hidden" id="book-id">
+        <div class="form-group">
+          <label for="book-titulo" class="form-label">Título <span style="color:var(--color-error)">*</span></label>
+          <input id="book-titulo" type="text" class="form-input" placeholder="Título del libro" required>
+        </div>
+        <div class="form-group">
+          <label for="book-autor" class="form-label">Autor <span style="color:var(--color-error)">*</span></label>
+          <input id="book-autor" type="text" class="form-input" placeholder="Nombre del autor" required>
+        </div>
+        <div class="form-group">
+          <label for="book-categoria" class="form-label">Categoría <span style="color:var(--color-error)">*</span></label>
+          <select id="book-categoria" class="form-select">
+            <option value="">Seleccioná una categoría</option>
+            <option value="Novela">Novela</option>
+            <option value="Ensayo">Ensayo</option>
+            <option value="Ciencia">Ciencia</option>
+            <option value="Infantil">Infantil</option>
+            <option value="Historia">Historia</option>
+            <option value="Poesía">Poesía</option>
+            <option value="Filosofía">Filosofía</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="book-imagen" class="form-label">URL de imagen <span class="optional">(opcional)</span></label>
+          <input id="book-imagen" type="url" class="form-input" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disponibilidad</label>
+          <select id="book-disponible" class="form-select">
+            <option value="true">Disponible</option>
+            <option value="false">Prestado</option>
+          </select>
+        </div>
+        <div id="modal-error" class="form-error hidden">Completá los campos obligatorios.</div>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="btn btn-secondary btn-sm">Cancelar</button>
+          <button id="modal-save"   class="btn btn-primary btn-sm">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL CONFIRMAR ELIMINAR ===== -->
+  <div id="delete-modal" class="modal-backdrop hidden">
+    <div class="modal-card" style="max-width:360px;">
+      <h2 class="modal-title">Eliminar libro</h2>
+      <p style="font-size:.9rem;color:var(--color-text-muted);margin-bottom:1.5rem;">
+        ¿Seguro que querés eliminar este libro? Esta acción no se puede deshacer.
+      </p>
+      <div class="modal-actions">
+        <button id="delete-cancel" class="btn btn-secondary btn-sm">Cancelar</button>
+        <button id="delete-confirm" class="btn btn-danger btn-sm">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
